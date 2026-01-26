@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import { Content as PromoBanner } from "@/components/PromoBanner.md";
+
+const html = `<strong>Hello from XSS</strong><script>alert("Hoi!")</script>`
 ---
 
 <BaseLayout title="Home">
   <h1>Homepage</h1>
+  <PromoBanner />
 </BaseLayout>

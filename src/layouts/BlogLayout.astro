@@ -1,0 +1,13 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+interface Props extends MarkdownLayoutProps<{ title: string }> {}
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <a href="/blog">Back to blog</a>
+  <slot />
+</BaseLayout>
