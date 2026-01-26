@@ -1,0 +1,39 @@
+---
+interface Props {
+  background?: string
+  color?: string
+  outline?: boolean;
+}
+
+const { outline = false, background, color } = Astro.props;
+---
+
+<button
+  class:list={[
+    "btn",
+    {
+      bordered: outline,
+    },
+  ]}
+>
+  <slot />
+</button>
+
+<style define:vars={{
+  background,
+  color
+}}>
+  .btn {
+    font: inherit;
+    max-width: fit-content;
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+    background: var(--background);
+    color: var(--color)
+  }
+</style>
