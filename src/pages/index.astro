@@ -2,11 +2,23 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import { Content as PromoBanner } from "@/components/PromoBanner.md";
+import { getCollection } from "astro:content";
 
-const html = `<strong>Hello from XSS</strong><script>alert("Hoi!")</script>`
+const teamData = await getCollection("team");
+const todos = await getCollection("todos");
 ---
 
 <BaseLayout title="Home">
   <h1>Homepage</h1>
+  {
+    teamData.map((t) => (
+      <p>
+        {t.id}. {t.data.name}
+      </p>
+    ))
+  }
+  <ul>
+    {todos.map((t) => <li>{t.data.title}</li>)}
+  </ul>
   <PromoBanner />
 </BaseLayout>
