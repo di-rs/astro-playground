@@ -2,16 +2,16 @@
 import Button from "../components/Button.astro";
 import Heading from "../components/Heading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import sanitizeHtml from 'sanitize-html';
-import Counter from '../components/Counter.svelte'
+import sanitizeHtml from "sanitize-html";
+import Counter from "../components/Counter.svelte";
 
-const html = `<strong>Hello from XSS</strong><script>alert("Hoi!")</script>`
+const html = `<strong>Hello from XSS</strong><script>alert("Hoi!")</script>`;
 ---
 
 <BaseLayout>
-	<h1 class="text-2xl text-red-400">Astro Components</h1>
-	<Heading tag="h2" size="h3"> hi </Heading>
-	<Fragment set:html={sanitizeHtml(html)} />
-	<Button background="var(--surface-2)" color="#fff">Btn text</Button>
-	<Counter client:visible />
+  <h1 class="text-2xl text-red-400">Astro Components</h1>
+  <Heading tag="h2" size="h3"> hi </Heading>
+  <Fragment set:html={sanitizeHtml(html)} />
+  <Button background="var(--surface-2)" color="#fff">Btn text</Button>
+  <Counter client:visible />
 </BaseLayout>

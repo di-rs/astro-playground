@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import * as mdxPost from './post-1.mdx'
+import * as mdxPost from "./post-1.mdx";
 import type { MarkdownInstance } from "astro";
 
 const posts: MarkdownInstance<{ title: string }>[] = Object.values(
   import.meta.glob("./*.{md,mdx}", { eager: true }),
 );
 
-console.log(mdxPost)
+console.log(mdxPost);
 ---
 
 <BaseLayout title="Blog">

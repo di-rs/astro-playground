@@ -5,7 +5,6 @@ import { Content as PromoBanner } from "@/components/PromoBanner.md";
 import { getCollection } from "astro:content";
 
 const teamData = await getCollection("team");
-const todos = await getCollection("todos");
 ---
 
 <BaseLayout title="Home">
@@ -17,8 +16,5 @@ const todos = await getCollection("todos");
       </p>
     ))
   }
-  <ul>
-    {todos.map((t) => <li>{t.data.title}</li>)}
-  </ul>
   <PromoBanner />
 </BaseLayout>

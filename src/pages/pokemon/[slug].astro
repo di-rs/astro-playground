@@ -1,0 +1,22 @@
+---
+export const prerender = false;
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { Pokemon } from "./Pokemon";
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect("404");
+}
+
+const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`);
+const data: Pokemon = await res.json();
+
+if (!data) {
+  return Astro.redirect("404");
+}
+---
+
+<BaseLayout title={data.name}>
+  <h1>{data.name}</h1>
+</BaseLayout>

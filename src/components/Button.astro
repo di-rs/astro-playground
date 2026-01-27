@@ -1,7 +1,7 @@
 ---
 interface Props {
-  background?: string
-  color?: string
+  background?: string;
+  color?: string;
   outline?: boolean;
 }
 
@@ -19,10 +19,12 @@ const { outline = false, background, color } = Astro.props;
   <slot />
 </button>
 
-<style define:vars={{
-  background,
-  color
-}}>
+<style
+  define:vars={{
+    background,
+    color,
+  }}
+>
   .btn {
     font: inherit;
     max-width: fit-content;
@@ -34,6 +36,6 @@ const { outline = false, background, color } = Astro.props;
     padding: 0.5rem 1.25rem;
     border-radius: 0.25rem;
     background: var(--background);
-    color: var(--color)
+    color: var(--color);
   }
 </style>

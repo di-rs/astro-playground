@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "fmt": "bun --bun prettier --write . --cache --log-level error",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,0 +1,47 @@
+---
+export const prerender = false;
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection, getEntry } from "astro:content";
+
+// export const getStaticPaths = (async () => {
+//   const posts = await getCollection("posts");
+//   return posts.map((post) => ({
+//     params: { slug: post.data.slug },
+//   }));
+// }) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+
+const post = slug
+  ? await getEntry("posts", slug)
+  : await getCollection("posts");
+
+if (!post) {
+  return Astro.redirect("404");
+}
+---
+
+<BaseLayout>
+  {
+    !Array.isArray(post) ? (
+      <>
+        <h1>{post.data.title}</h1>
+        <img src={post.data.cover.src} alt={post.data.coverAlt} />{" "}
+      </>
+    ) : (
+      <ul>
+        {post.map(({ data }) => (
+          <li>
+            <a href={`/posts/${data.slug}`}>
+              <p>
+                {data.title}. {data.canonicalURL}
+              </p>
+            </a>
+            <img src={data.cover.src} alt={data.coverAlt} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
