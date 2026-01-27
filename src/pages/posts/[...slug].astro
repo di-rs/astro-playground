@@ -22,7 +22,7 @@ if (!post) {
 }
 ---
 
-<BaseLayout>
+<BaseLayout title={Array.isArray(post) ? "Posts" : post.data.title}>
   {
     !Array.isArray(post) ? (
       <>
