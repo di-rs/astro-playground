@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// import { getCollection } from "astro:content";
+import ReactList from "../components/ReactList";
+
+// const products = await getCollection("products", ({ data }) => data.in_stock);
+---
+
+<BaseLayout title="Products">
+  <ReactList client:only="react" />
+</BaseLayout>
